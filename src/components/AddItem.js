@@ -11,7 +11,7 @@ class AddItem extends Component {
     }
 
     handleClick = () => {
-        let theProduct = this.props.products.filter( product => product.id == this.state.productId )
+        let theProduct = this.props.products.filter( product => product.id == this.state.productId )[0]
         this.props.addItemFunc({
             product: theProduct,
             quantity: this.state.quantity

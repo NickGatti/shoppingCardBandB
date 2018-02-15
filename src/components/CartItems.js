@@ -1,13 +1,15 @@
 import React from 'react'
 import CartItem from './CartItem'
 
-const CartItems = ({items}) => {
+const CartItems = (props) => {
 
-  let itemList = items.map( (item, index) => <CartItem key={index} item={item} /> )
+  let itemList = props.items.map( (item, index) => <CartItem key={index} item={item} /> )
 
-  let itemsTotal  = items.reduce( (acc, currVal) => {
+  let itemsTotal  = props.items.reduce( (acc, currVal) => {
     return acc + (currVal.quantity * currVal.product.priceInCents / 100)
   }, 0 )
+
+  console.log(props)
 
   return (
       <div className="container">
