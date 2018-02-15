@@ -5,6 +5,10 @@ const CartItems = ({items}) => {
 
   let itemList = items.map( (item, index) => <CartItem key={index} item={item} /> )
 
+  let itemsTotal  = items.reduce( (acc, currVal) => {
+    return acc + (currVal.quantity * currVal.product.priceInCents / 100)
+  }, 0 )
+
   return (
       <div className="container">
         <h1>Items</h1>
@@ -16,6 +20,7 @@ const CartItems = ({items}) => {
           </div>
           {itemList}
         </div>
+        <p>Total: ${itemsTotal}</p>
       </div>
   )
 }
