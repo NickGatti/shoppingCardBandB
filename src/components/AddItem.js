@@ -11,8 +11,11 @@ class AddItem extends Component {
     }
 
     handleClick = () => {
-        console.log('product id', this.state.productId)
-        console.log('quantity', this.state.quantity)
+        let theProduct = this.props.products.filter( product => product.id == this.state.productId )
+        this.props.addItemFunc({
+            product: theProduct,
+            quantity: this.state.quantity
+        })
     }
 
     render () {
@@ -21,7 +24,6 @@ class AddItem extends Component {
                 <option key={product.id} value={product.id}>{product.name}</option>
             )
         })
-        console.log(this.state)
         return (
         <Row>
             <h2>Add Item</h2>
@@ -36,6 +38,7 @@ class AddItem extends Component {
             s={12} 
             type='select' 
             label="Select Item" 
+            onChange={(e) => this.setState({ productId: e.target.value })}
             defaultValue='2'>
                 {listOfProducts}
             </Input>

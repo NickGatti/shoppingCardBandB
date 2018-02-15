@@ -29,11 +29,15 @@ class App extends Component {
     ]
   }
 
+  addItemFunc = (newItem) => {
+    this.setState({ items: this.state.items.concat(newItem) })
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <AddItem products={this.state.products}/>
+        <AddItem products={this.state.products} addItemFunc={this.addItemFunc} />
         <CartItems items={this.state.items} />
         <Footer year="2018"/>
       </div>
